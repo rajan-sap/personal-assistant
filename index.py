@@ -4,10 +4,10 @@ from components.footer import Footer
 
 ROLE_LABELS = [
     ("Who am I?", "/my_profile"),
-    ("Social Media Manager", "/social_media_manager"),
-    ("Content Creator", "/content_creator"),
-    ("Job Assistant", "/job_assistant_tracker"),
-    ("Business Marketer", "/business_marketer"),
+    ("AI Social Media Manager", "/social_media_manager"),
+    ("AI Content Creator", "/content_creator"),
+    ("AI Job Assistant", "/job_assistant_tracker"),
+    ("AI Business Marketer", "/business_marketer"),
     ("Personal Projects", "/personal_projects"),
     ("Commercial Products", "/commercial_products"),
     ("My Calendar", "/my_calendar"),
@@ -54,30 +54,42 @@ def Page():
             "background": "#23272f",  # Match main background
         }):
             for label, route in ROLE_LABELS:
-                solara.Button(
-                    label=label,
-                    style={
-                        "width": "100%",
-                        "height": "100%",
-                        "fontSize": "1.3rem",
-                        "fontWeight": "bold",
-                        "borderRadius": "24px",
-                        "border": "2.5px solid #444950",
-                        "background": "#2d323c",
-                        "color": "#e0e6ed",
-                        "boxShadow": "0 4px 16px rgba(20,20,30,0.18)",
-                        "transition": "box-shadow 0.2s, border 0.2s",
-                        "cursor": "pointer",
-                        "padding": "0",
-                        "whiteSpace": "normal",
-                        "textAlign": "center",
-                        "display": "flex",
-                        "alignItems": "center",
-                        "justifyContent": "center",
-                        "boxSizing": "border-box",
-                    },
-                    on_click=lambda r=route: handle_button_click(r)
-                )
+                with solara.Div(style={
+                    "width": "100%",
+                    "height": "100%",
+                    "background": "#2d323c",
+                    "borderRadius": "24px",
+                    "border": "2.5px solid #444950",
+                    "boxShadow": "0 4px 16px rgba(20,20,30,0.18)",
+                    "display": "flex",
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "boxSizing": "border-box",
+                    "padding": "0",
+                }):
+                    solara.Button(
+                        label=label,
+                        style={
+                            "width": "90%",
+                            "height": "80%",
+                            "fontSize": "1.3rem",
+                            "fontWeight": "bold",
+                            "borderRadius": "18px",
+                            "border": "none",
+                            "background": "#444950",
+                            "color": "#e0e6ed",
+                            "boxShadow": "none",
+                            "transition": "box-shadow 0.2s, border 0.2s",
+                            "cursor": "pointer",
+                            "whiteSpace": "normal",
+                            "textAlign": "center",
+                            "display": "flex",
+                            "alignItems": "center",
+                            "justifyContent": "center",
+                            "boxSizing": "border-box",
+                        },
+                        on_click=lambda r=route: handle_button_click(r)
+                    )
         if show_login:
             with solara.Card(style={
                 "position": "fixed",
